@@ -67,7 +67,7 @@ func initHandler(conn net.Conn) {
 	}
 	encoded := base64.StdEncoding.EncodeToString(buf[:l])
 	log(conn.RemoteAddr().String(), conn.LocalAddr().String(), encoded)
-	conn.Write(buf)
+	conn.Write(buf[:l])
 }
 
 func log(a ...interface{}) {
